@@ -8,23 +8,23 @@
 
 <ion-content>
     <ion-list>
-
       <!-- Liste des tâches -->
-      <ion-item *ngFor="let task of tasks">
-        <ion-label >{{ task.title }}</ion-label>
+      <ion-item *ngFor="let task of tasks, let i = index">
+        <ion-label [class.done]="task.status" >{{ task.title }}</ion-label>
         <ion-checkbox [(ngModel)]="task.status"
+                      color="dark"
                       [checked]="task.status"
                       slot="start"></ion-checkbox>
-        <ion-button  (click)="updateTask()">
+
+        <ion-button  (click)="updateTask(i)">
           <ion-icon name="create"></ion-icon>
         </ion-button>
-        <ion-button color="danger"  (click)="deleteTask()">
+        <ion-button color="danger" (click)="deleteTask(i)">
           <ion-icon name="trash" ></ion-icon>
         </ion-button>
       </ion-item>
 
       <!-- Ajouter une tâche -->
-
       <ion-item>
         <ion-input type="text"
                    [(ngModel)]="task.title"
@@ -32,11 +32,6 @@
                    placeholder="Ajouter une tâche.">
         </ion-input>
       </ion-item>
-
-
-
-
-
 
     </ion-list>
 </ion-content>

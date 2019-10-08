@@ -1,1 +1,5 @@
-
+$done-color:grey;
+.done{
+  color: $done-color;
+  text-decoration: line-through;
+}

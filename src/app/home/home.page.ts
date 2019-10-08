@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Task } from '../models/task';
 import { TaskStorageService } from '../services/task-storage.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,7 @@ export class HomePage {
    * lors de la pression sur "Entrer"
    * @param code
    */
-  saveTask(code: string): void {
+   saveTask(code: string): void {
     // -- Lorsque l'utilisateur appuie sur la touche "Entrer" ;
     if (code === 'Enter') {
 
@@ -34,17 +35,18 @@ export class HomePage {
 
       // -- J'enregistre les tâches
       this.taskStorage.saveTasks(this.tasks);
-
       // -- Je remet à zero la tâche.
       this.task = new Task();
     }
   }
 
-  deleteTask(id) {
+  deleteTask(i) {
 
-    this.tasks.splice(id, 1);
-    this.taskStorage.deleteTasks(this.tasks);
-
+    console.log(i);
+    this.tasks.slice(i, 1);
   }
 
+  updateTask(task: Task) {
+
+  }
 }

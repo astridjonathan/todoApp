@@ -23,9 +23,7 @@ export class TaskStorageService {
     return this.storage.get('tasks');
   }
 
-  deleteTasks(tasks: Task[]): void {
-    this.storage.set('tasks', tasks);
-  }
+
 
 
 }
