@@ -1,14 +1,42 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Mes Tâches
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+    <ion-list>
+
+      <!-- Liste des tâches -->
+      <ion-item *ngFor="let task of tasks">
+        <ion-label >{{ task.title }}</ion-label>
+        <ion-checkbox [(ngModel)]="task.status"
+                      [checked]="task.status"
+                      slot="start"></ion-checkbox>
+        <ion-button  (click)="updateTask()">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+        <ion-button color="danger"  (click)="deleteTask()">
+          <ion-icon name="trash" ></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <!-- Ajouter une tâche -->
+
+      <ion-item>
+        <ion-input type="text"
+                   [(ngModel)]="task.title"
+                   (keypress)="saveTask($event.code)"
+                   placeholder="Ajouter une tâche.">
+        </ion-input>
+      </ion-item>
+
+
+
+
+
+
+    </ion-list>
 </ion-content>
